@@ -1,4 +1,4 @@
-"The Reverse Cipher Encription"
+"Reverse Cipher (Encriprtion and Decription)"
 MESSAGE = input("Input Message: ")
 TRANSLATED = ' '
 
