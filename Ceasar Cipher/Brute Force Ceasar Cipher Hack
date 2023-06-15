@@ -1,0 +1,27 @@
+"Brute Force Ceasar Cipher Hack"
+MESSAGE = input("Input Message: ")
+SYMBOLS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !?.'
+
+# Loop through every possible key
+for KEY in range(len(SYMBOLS)):
+    TRANSLATED = ''
+
+    for SYMBOL in MESSAGE:
+        if SYMBOL in SYMBOLS:
+            SYMBOLINDEX = SYMBOLS.find(SYMBOL)
+            TRANSLATEDINDEX = SYMBOLINDEX - KEY
+
+            # Handle the wraparound
+            if TRANSLATEDINDEX < 0:
+                TRANSLATEDINDEX = TRANSLATEDINDEX + len(SYMBOLS)
+            
+            # Append the decrypted symbol
+            TRANSLATED = TRANSLATED + SYMBOLS[TRANSLATEDINDEX]
+        
+        else:
+            # Append the symbol without encrypting/decrypting
+            TRANSLATED = TRANSLATED + SYMBOL
+    
+    # Display every possible decryption
+    print('Key #%s: %s' % (KEY, TRANSLATED))
+    
