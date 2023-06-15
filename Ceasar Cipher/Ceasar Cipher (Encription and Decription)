@@ -1,0 +1,30 @@
+"Ceasar Cipher (Encription and Decription)"
+MESSAGE = input("Input Message: ")
+KEY = 13
+MODE = input("Select Mode (encrypt or decrypt): ")
+#Preset symbols that are used. Can add more as necessary.
+SYMBOLS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !?.'
+TRANSLATED = " "
+
+for SYMBOL in MESSAGE:
+    if SYMBOL in SYMBOLS:
+        SYMBOLINDEX = SYMBOLS.find(SYMBOL) 
+
+        # Perform encryption/decryption
+        if MODE == "encrypt":
+            TRANSLATEDINDEX = SYMBOLINDEX + KEY
+        if MODE == "decrypt":
+            TRANSLATEDINDEX = SYMBOLINDEX - KEY
+        
+        # Handle wraparound, if needed
+        if TRANSLATEDINDEX > len(SYMBOLS):
+            TRANSLATEDINDEX = TRANSLATEDINDEX - len(SYMBOLS)
+        elif TRANSLATEDINDEX < 0:
+            TRANSLATEDINDEX = TRANSLATEDINDEX + len(SYMBOLS)
+        
+        TRANSLATED = TRANSLATED + SYMBOLS[TRANSLATEDINDEX]
+    else: 
+        # Append the symbol without encrypting/decrypting
+        TRANSLATED = TRANSLATED + SYMBOL
+    
+print(TRANSLATED)
